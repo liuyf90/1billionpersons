@@ -39,6 +39,8 @@ result.extend(firstNames1)
 #print(firstNames)
 #print(birthdays)
 #print(len(result))
+
+#insert 100million records
 for n in range(1,100000000):
   nr = random.randrange(1, len(result))
   firstName=result[nr]
@@ -49,13 +51,11 @@ for n in range(1,100000000):
 
   br = random.randrange(1, len(birthdays))
   birthday=birthdays[br]
-  #print(r,{str(firstName)})
   mycursor = mydb.cursor()
   sql = "INSERT INTO person (first_name,last_name,birthday) VALUES (%s, %s,%s)"
-  #print(birthday)
-  #val = (firstName,lastName,datetime.datetime.strptime(str(birthday),"%Y-%m-%d %H:%M:%S"));
   val = (firstName,lastName,birthday);
   mycursor.execute(sql, val)
+  #1million to commit please edit it for your need
   if (n%1000000==0):
     mydb.commit() 
 f.close()
@@ -66,13 +66,3 @@ f3.close()
 print(mycursor.rowcount, "record inserted.")
 
 print(time.localtime())
-'''
-mycursor = mydb.cursor()
-sql = "INSERT INTO person (first_name,last_name,birthday) VALUES (%s, %s,%s)"
-val = ("John", "Highway 21","2019-11-1");
-mycursor.execute(sql, val)
-
-mydb.commit()
-
-print(mycursor.rowcount, "record inserted.")
-'''
