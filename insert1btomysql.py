@@ -41,7 +41,7 @@ result.extend(firstNames1)
 #print(len(result))
 
 #insert 100million records
-for n in range(1,100000000):
+for n in range(1,100000001):
   nr = random.randrange(1, len(result))
   firstName=result[nr]
   
